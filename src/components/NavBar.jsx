@@ -9,6 +9,7 @@ import {
   MDBIcon,
   MDBCollapse,
 } from "mdb-react-ui-kit";
+import { NavLink } from "react-router-dom";
 
 export default function NavBar() {
   const [showNavSecond, setShowNavSecond] = useState(false);
@@ -26,14 +27,12 @@ export default function NavBar() {
         </MDBNavbarToggler>
         <MDBCollapse navbar show={showNavSecond}>
           <MDBNavbarNav>
-            <MDBNavbarLink active aria-current="page" href="#">
+            <NavLink to="/" className="nav-link ">
               Home
-            </MDBNavbarLink>
-            <MDBNavbarLink href="#">Features</MDBNavbarLink>
-            <MDBNavbarLink href="#">Pricing</MDBNavbarLink>
-            <MDBNavbarLink disabled href="#" tabIndex={-1} aria-disabled="true">
-              Disabled
-            </MDBNavbarLink>
+            </NavLink>
+            <NavLink to="/api" className="nav-link ">
+              Api
+            </NavLink>
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>

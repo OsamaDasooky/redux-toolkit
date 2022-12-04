@@ -13,7 +13,7 @@ import { deleUser, accountState } from "../reducers/AccountsReducer";
 import { minesOne, addOne, counterState } from "../reducers/CounterReducer";
 
 export function Home() {
-  const accounts = useSelector(accountState);
+  const accounts = useSelector((state) => state.accounts);
   const counter = useSelector(counterState);
 
   const dispatch = useDispatch();

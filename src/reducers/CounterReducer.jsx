@@ -7,10 +7,10 @@ const counterSlice = createSlice({
   name: "counter",
   initialState,
   reducers: {
-    addOne: (state, action) => {
+    addOne: (state) => {
       state.value++;
     },
-    minesOne: (state, action) => {
+    minesOne: (state) => {
       state.value--;
     },
   },

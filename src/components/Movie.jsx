@@ -2,7 +2,6 @@ import React from "react";
 import { MDBCol, MDBCard, MDBCardBody, MDBCardImage } from "mdb-react-ui-kit";
 
 function Movie({ movie }) {
-  console.log(movie);
   return (
     <MDBCol md="6" lg="3" className="mb-4 ps-2">
       <MDBCard>

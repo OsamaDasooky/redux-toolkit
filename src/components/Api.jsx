@@ -4,11 +4,12 @@ import Movie from "./Movie";
 import axios from "axios";
 import { useEffect } from "react";
 import { saveData } from "../reducers/ApiReducer";
+import { fetchMovies } from "../reducers/ApiReducer";
 import { useDispatch, useSelector } from "react-redux";
 export const Api = () => {
   const dispatch = useDispatch();
-  const movies = useSelector((state) => state.movies[0]);
-  console.log(movies);
+  const { movies, isLoading } = useSelector((state) => state.movies);
+  // console.log(movies);
   const fetchData = () => {
     axios
       .get("https://api.tvmaze.com/shows")
@@ -20,15 +21,18 @@ export const Api = () => {
       });
   };
   useEffect(() => {
-    fetchData();
+    if (movies.length == 0) {
+      dispatch(fetchMovies());
+    }
   }, []);
-  if (movies.length === 0) {
+
+  if (isLoading) {
     return "loading ....";
   }
   return (
     <>
       <MDBRow className="g-0 justify-content-evenly align-items-center g-2">
-        {movies?.map((movie) => {
+        {movies[0]?.map((movie) => {
           return <Movie movie={movie} key={movie.id} />;
         })}
       </MDBRow>
